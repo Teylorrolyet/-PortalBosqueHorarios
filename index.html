@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Bosque · Registro de Horarios</title>
+<link rel="manifest" href="manifest.json">
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,sans-serif;
+  background:#f0f7f4 url('logo-portal-bosque.png') no-repeat center/60%;
+  color:#0f172a;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.panel{
+  background:#ffffff;
+  width:100%;
+  max-width:520px;
+  padding:2rem;
+  border-radius:14px;
+  box-shadow:0 20px 40px rgba(0,0,0,.1);
+}
+h1{text-align:center;margin:.2rem 0}
+.subtitle{text-align:center;color:#64748b;margin-bottom:1rem;font-size:.9rem}
+input,button{
+  width:100%;
+  padding:.75rem;
+  margin-bottom:.7rem;
+  border-radius:8px;
+  border:1px solid #cbd5f5;
+  font-size:.95rem
+}
+input:focus{outline:none;border-color:#2563eb}
+button{
+  background:#14532d;
+  color:#fff;
+  border:none;
+  font-weight:600;
+  cursor:pointer
+}
+button:hover{background:#166534}
+.link{background:none;color:#475569;border:none;cursor:pointer}
+.danger{color:#b91c1c}
+.hidden{display:none}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.85rem}
+th,td{padding:.55rem;border-bottom:1px solid #e2e8f0;text-align:center}
+th{background:#f1f5f9}
+.total-box{
+  background:#dcfce7;
+  border:1px solid #86efac;
+  color:#14532d;
+  font-weight:700;
+  text-align:center;
+  margin-top:1.2rem;
+  padding:1rem;
+  border-radius:10px
+}
+.notice{
+  background:#ecfeff;
+  border:1px solid #67e8f9;
+  color:#0f766e;
+  font-size:.85rem;
+  text-align:center;
+  margin-bottom:1rem;
+  padding:.6rem;
+  border-radius:8px
+}
+</style>
+</head>
+<body>
+<div class="panel">
+
+  <!-- LOGIN -->
+  <div id="auth">
+    <h1>Portal Bosque</h1>
+    <p class="subtitle">Registro de horarios del personal · Maldonado, Uruguay</p>
+    <div id="authNotice" class="notice hidden"></div>
+    <input id="email" placeholder="Correo" type="email" />
+    <input id="pass" type="password" placeholder="Contraseña" />
+    <button id="btnLogin">Ingresar</button>
+    <button id="btnRegister">Crear usuario</button>
+  </div>
+
+  <!-- APP -->
+  <div id="app" class="hidden">
+    <h1 id="welcome"></h1>
+    <p class="subtitle">Ingresá los horarios manualmente</p>
+
+    <div id="appNotice" class="notice hidden"></div>
+
+    <input type="month" id="mes" />
+    <input type="date" id="fecha" />
+
+    <div class="grid">
+      <div>
+        <label>Entrada</label>
+        <input type="time" id="entrada" />
+      </div>
+      <div>
+        <label>Salida</label>
+        <input type="time" id="salida" />
+      </div>
+    </div>
+
+    <button id="btnGuardar">Guardar jornada</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Entrada</th>
+          <th>Salida</th>
+          <th>Horas</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="tabla"></tbody>
+    </table>
+
+    <div id="total" class="total-box"></div>
+
+    <button id="btnShare">Compartir por WhatsApp</button>
+
+    <button class="link danger" id="btnLogout">Cerrar sesión</button>
+  </div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
